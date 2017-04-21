@@ -7,10 +7,8 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.warcbase</groupId>
   <artifactId>warcbase-hbase</artifactId>
   <packaging>jar</packaging>
-  <version>0.1.0-SNAPSHOT</version>
   <name>Warcbase (HBase)</name>
   <description>An open-source platform for managing and analyzing web archives</description>
   <url>http://warcbase.org/</url>
