@@ -8,6 +8,7 @@ services:
       - "8887:9001"
     volumes:
       - ./warcbase-core:/warcbase-core
+      - ./notebooks:/notebooks
     environment:
       - "JAVA_OPTS=-Xmx1g"
       - "ADD_JARS=/warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar"
@@ -19,6 +20,7 @@ services:
       - "8889:8888"
     volumes:
       - ./warcbase-core:/warcbase-core
+      - ./notebooks:/home/jovyan/work
     environment:
       - "SPARK_OPTS=--jars /warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar"
 
@@ -28,6 +30,7 @@ services:
       - "8890:8080"
     volumes:
       - ./warcbase-core:/warcbase-core
+#      - ./persist:/opt/zeppelin/notebook/
     environment:
       - "SPARK_SUBMIT_OPTIONS=\"--jars /warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar\""
 
