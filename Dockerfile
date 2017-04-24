@@ -43,7 +43,7 @@ COPY . /warcbase
 RUN cd /warcbase \
   && mvn install
 
-ENV EXTRA_CLASSPATH /warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar
+ENV ADD_JARS /warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar
 
 WORKDIR /work
 

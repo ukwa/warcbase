@@ -9,7 +9,8 @@ services:
     volumes:
       - ./warcbase-core:/warcbase-core
     environment:
-      - "EXTRA_CLASSPATH=/warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar"
+      - "JAVA_OPTS=-Xmx1g"
+      - "ADD_JARS=/warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar"
 
   jupyter:
     image: jupyter/all-spark-notebook
