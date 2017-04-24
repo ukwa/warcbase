@@ -31,7 +31,7 @@ RUN wget http://www-us.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_V
 #RUN wget https://s3.eu-central-1.amazonaws.com/spark-notebook/tgz/spark-notebook-master-scala-$SCALA_VERSION-spark-$SPARK_VERSION-hadoop-$HADOOP_VERSION.0-cdh5.4.2.tgz \
 #  && tar xfz spark-notebook-master-scala-$SCALA_VERSION-spark-$SPARK_VERSION-hadoop-$HADOOP_VERSION.tgz \
 #  && rm spark-notebook-master-scala-$SCALA_VERSION-spark-$SPARK_VERSION-hadoop-$HADOOP_VERSION.tgz
-ENV SPARK_NOTEBOOK_VERSION=0.6.3-scala-2.10.5-spark-1.6.2-hadoop-2.6.0-cdh5.7.1-with-hive-with-parquet
+ENV SPARK_NOTEBOOK_VERSION=0.7.0-scala-2.11.8-spark-2.1.0-hadoop-2.6.0
 #RUN wget https://s3.eu-central-1.amazonaws.com/spark-notebook/tgz/spark-notebook-master-scala-2.10.5-spark-1.6.2-hadoop-2.6.0-cdh5.4.2.tgz
 # https://s3.eu-central-1.amazonaws.com/spark-notebook/tgz/spark-notebook-0.6.3-scala-2.10.5-spark-1.6.2-hadoop-2.6.0-cdh5.7.1-with-hive-with-parquet.tgz?max-keys=100000
 RUN wget https://s3.eu-central-1.amazonaws.com/spark-notebook/tgz/spark-notebook-$SPARK_NOTEBOOK_VERSION.tgz \
@@ -43,7 +43,7 @@ COPY . /warcbase
 RUN cd /warcbase \
   && mvn install
 
-#ENV EXTRA_CLASSPATH /warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar
+ENV EXTRA_CLASSPATH /warcbase/warcbase-core/target/warcbase-core-0.1.0-SNAPSHOT-fatjar.jar
 
 WORKDIR /work
 
@@ -54,4 +54,5 @@ VOLUME /deps /data /notes
 #RUN tr "\r" " " < conf/zeppelin-env.sh.temp > conf/zeppelin-env.sh
 
 #CMD bin/zeppelin-daemon.sh start && bash
+CMD /spark-notebook-$SPARK_NOTEBOOK_VERSION/bin/spark-notebook
 
